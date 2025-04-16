@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Slider from './slider';
+import Slider from '../Slider/slider';
 import './Catalog.css';
-import { games } from './GamesData';
+import { games } from '../GameDetails/GamesData';
 import { Link } from 'react-router-dom';
-import Filters, { filterGames, getTimeDisplay } from './Filters';
+import Filters, { filterGames, getTimeDisplay } from '../Filters/Filters';
 
 
 const Catalog = () => {

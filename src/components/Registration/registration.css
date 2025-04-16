@@ -1,4 +1,4 @@
-.login-container {
+.registration-container {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
@@ -8,11 +8,12 @@
     text-align: center;
   }
   
-  .login-container h2 {
+  .registration-container h2 {
     margin-bottom: 20px;
   }
   
   .form-group {
+    position: relative;
     margin-bottom: 15px;
     text-align: left;
   }
@@ -29,7 +30,7 @@
     border-radius: 5px;
   }
   
-  .login-button {
+  .registration-button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -39,10 +40,21 @@
     cursor: pointer;
   }
   
-  .login-button:hover {
+  .registration-button:hover {
     background-color: #0056b3;
   }
   
   p {
     margin-top: 15px;
+  }
+  .link{
+    margin-top: 10px;
+  }
+  .span-message{
+    display: block;
+    margin-bottom: 15px;
+    color: red;
+    font-size: 12px;
+    width: 100%;    
+    text-align: left;
   }

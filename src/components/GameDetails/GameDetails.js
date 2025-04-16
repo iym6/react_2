@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../Cart/context/CartContext';
 import { games } from './GamesData';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './GameDetails.css';
-import './Slider.css';
+import '../Slider/Slider.css';
 
 const GameDetails = () => {
   const { id } = useParams();

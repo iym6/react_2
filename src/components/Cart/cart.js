@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../Cart/context/CartContext';
 import './Cart.css';
 
 const Cart = () => {
@@ -8,10 +8,14 @@ const Cart = () => {
     useContext(CartContext);
 
   const totalPrice = cart.reduce(
-    (sum, item) => sum + parseFloat(item.price.replace('₽', '')) * item.quantity,
+    (sum, item) => sum + item.specs.price * item.quantity,
     0
   );
-
+  const clearCartWithConfirm = () => {
+    if (window.confirm('Вы действительно хотите очистить корзину?')) {
+      clearCart();
+    }
+  };
   return (
     <div className="cart">
       <h1>Корзина</h1>
@@ -22,7 +26,7 @@ const Cart = () => {
           <div className="cart-items">
             {cart.map((item) => (
               <div className="cart-item" key={item.id}>
-                <img src={item.mainImage} alt={item.title} />
+                <img src={item.media.mainImage} alt={item.title} />
                 <div className="cart-item-info">
                   <h2>{item.title}</h2>
                   <p>{item.price}</p>
@@ -38,9 +42,9 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="cart-summary">
+          <div className="cart-summary"> 
             <h2>Итого: {totalPrice.toFixed(2)}₽</h2>
-            <button className="clear-cart" onClick={clearCart}>Очистить корзину</button>
+            <button className="clear-cart"  onClick={clearCartWithConfirm}>Очистить корзину</button>
             <Link to="/checkout" className="checkout-button">
               Оформить заказ
             </Link>
