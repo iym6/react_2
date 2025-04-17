@@ -23,10 +23,13 @@ export default function Registration(){
     function setValue(e,nameElement){
         switch(nameElement){
             case 'password':{
-                if(e.target.value==''){
+                if(e.target.value===''){
                     setHasErrorPassword(true)
                 }
                 else{
+                    if(e.target.value===repeatPassword){
+                        setHasErrorRepeatPassword(false)
+                    }
                     setHasErrorPassword(false)    
                 }
                 setPassword(e.target.value)
@@ -34,7 +37,7 @@ export default function Registration(){
             }
             case 'repeatPassword':{
                 setRepeatPassword(e.target.value)
-                if(e.target.value==password && e.target.value!=''){
+                if(e.target.value===password && e.target.value!==''){
                     setHasErrorRepeatPassword(false)
                 }
                 else{
@@ -43,7 +46,7 @@ export default function Registration(){
                 break
             }
             case 'email':{
-                if(e.target.value==''){
+                if(e.target.value===''){
                     setHasErrorEmail(true)
                 }
                 else{
@@ -53,7 +56,7 @@ export default function Registration(){
                 break
             }
             case ('phoneNumber'):{
-                if(e.target.value==''){
+                if(e.target.value===''){
                     setHasErrorPhoneNumber(true)
                 }
                 else{
@@ -62,6 +65,7 @@ export default function Registration(){
                 setPhoneNumber(e.target.value)
                 break
             }
+            default:{}
         }
     }
 
