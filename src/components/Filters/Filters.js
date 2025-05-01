@@ -78,6 +78,19 @@ const Filters = ({ onFilterChange }) => {
   };
 
   const handleRangeChange = (name, values) => {
+    // Добавляем проверку, чтобы ползунки не пересекались
+    const [min, max] = values;
+    const [currentMin, currentMax] = filters[name];
+    
+    // Если двигаем левый ползунок - не даем ему превысить правый
+    if (min !== currentMin && min > currentMax) {
+      values = [currentMax, currentMax];
+    } 
+    // Если двигаем правый ползунок - не даем ему быть меньше левого
+    else if (max !== currentMax && max < currentMin) {
+      values = [currentMin, currentMin];
+    }
+    
     handleFilterChange({ ...filters, [name]: values });
   };
 
