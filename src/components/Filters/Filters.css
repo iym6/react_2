@@ -184,3 +184,14 @@
     color: white;
     border-color: #e74c3c;
   }
+  .range-input input[type="range"]:first-child::-webkit-slider-thumb {
+    z-index: 3;
+  }
+  
+  .range-input input[type="range"]:last-child::-webkit-slider-thumb {
+    z-index: 2;
+  }
+  
+  .range-input input[type="range"]:active::-webkit-slider-thumb {
+    z-index: 4 !important;
+  }
