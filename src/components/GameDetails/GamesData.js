@@ -34,7 +34,7 @@ export const games = [
       players: { min: 4, max: 7, image: "/images/Players 4-7.png" },
       price: 990
     },
-    categories: ["мафия", "на компанию", "карточные"],
+    categories: ["мафия", "для компании", "карточные"],
     media: {
       mainImage: "/images/Bang.jpg",
       gallery: [
@@ -57,7 +57,7 @@ export const games = [
       players: { min: 2, max: 5, image: "/images/Players 2-5.png" },
       price: 1790
     },
-    categories: ["на компанию", "стратегические"],
+    categories: ["для компании", "стратегические"],
     media: {
       mainImage: "/images/Carcassonne.jpg",
       gallery: [
@@ -79,7 +79,7 @@ export const games = [
       players: { min: 2, max: 5, image: "/images/Players 2-5.png" },
       price: 1290
     },
-    categories: ["на компанию", "стратегические", "экономические", "семейные", "карточные"],
+    categories: ["для компании", "стратегические", "экономические", "семейные", "карточные"],
     media: {
       mainImage: '/images/Machi Koro.jpg',
       gallery: [
@@ -101,7 +101,7 @@ export const games = [
       players: { min: 2, max: 6, image: "/images/Players 2-6.png" },
       price: 2990
     },
-    categories: ["на компанию", "экономические"],
+    categories: ["для компании", "экономические"],
     media: {
       mainImage: '/images/Monopoly.jpg',
       gallery: [
@@ -123,7 +123,7 @@ export const games = [
       players: { min: 2, max: 8, image: "/images/Players 2-8.png" },
       price: 2990
     },
-    categories: ["на компанию", "стратегические", "карточные", "экономические" ],
+    categories: ["для компании", "стратегические", "карточные", "экономические" ],
     media: {
       mainImage: '/images/Citadels.jpg',
       gallery: [
@@ -144,7 +144,7 @@ export const games = [
       players: { min: 3, max: 4, image: "/images/Players 3-4.png" },
       price: 3990
     },
-    categories: ["на компанию", "стратегические", "семейные", "экономические"],
+    categories: ["для компании", "стратегические", "семейные", "экономические"],
     media: {
       mainImage: "/images/Catan.jpg",
       gallery: [

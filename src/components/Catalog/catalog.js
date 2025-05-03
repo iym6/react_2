@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Slider from '../Slider/slider';
+import { CartContext } from '../Cart/context/CartContext'
 import './Catalog.css';
 import { games } from '../GameDetails/GamesData';
 import { Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ const Catalog = () => {
     age: [0, 99],
     time: [0, 180],
     players: [2, 8],
-    categories: []
+    categories: [],
   });
 
   const [sortBy, setSortBy] = useState('default'); // 'default', 'price-asc', 'price-desc'
@@ -83,8 +84,19 @@ const Catalog = () => {
 
 // Компонент карточки игры
 const GameCard = ({ game, viewMode }) => {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); 
+    e.preventDefault(); 
+    addToCart({
+      ...game,
+      quantity: 1
+    });
+  };
+
   return (
-    <div className={`game-card ${viewMode}`}>
+    <Link to={`/game/${game.id}`} className={`game-card ${viewMode}`} style={{ textDecoration: 'none' }}>
       <div className="game-image">
         <img 
           src={game.media.mainImage} 
@@ -114,12 +126,15 @@ const GameCard = ({ game, viewMode }) => {
         
         <div className="game-footer">
           <div className="price">{game.specs.price}₽</div>
-          <Link to={`/game/${game.id}`} className="details-btn">
-              Подробнее
-            </Link>
+          <button 
+            className="add-to-cart" 
+            onClick={handleAddToCart}
+          >
+            В корзину
+          </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -89,6 +89,19 @@
   padding-right: 15px;
 }
 
+.add-to-cart {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3;
+}
+
 /* Сетка игр */
 .games-grid {
   flex-grow: 1;
@@ -237,6 +250,10 @@
 
 .details-btn:hover {
   background: #2980b9;
+}
+
+.no-results {
+  
 }
 
 /* Адаптивность */

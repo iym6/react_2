@@ -1,16 +1,16 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react'; // Импортируем Swiper и SwiperSlide
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'; // Импортируем модули
-import 'swiper/css'; // Основные стили Swiper
-import 'swiper/css/navigation'; // Стили для навигации
-import 'swiper/css/pagination'; // Стили для пагинации
-import 'swiper/css/autoplay'; // Стили для автопрокрутки
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 import './Slider.css';
 
 const Slider = () => {
   return (
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]} // Подключаем модули
+      modules={[Navigation, Pagination, Autoplay]}
       slidesPerView={3}
       spaceBetween={50}
       centeredSlides={true}
@@ -26,28 +26,65 @@ const Slider = () => {
         delay: 2000,
         disableOnInteraction: false,
       }}
-      onSlideChange={(swiper) => {
-        const slides = swiper.slides;
-        slides.forEach((slide) => {
-          slide.style.opacity = '0.5';
-        });
-        slides[swiper.activeIndex].style.opacity = '1';
+      breakpoints={{
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50
+        }
       }}
     >
       <SwiperSlide>
-        <img src="/images/preview_monopoly.jpg" alt="Акция 1" className="img-fluid" />
+        <div className="slide-image-container">
+          <img 
+            src="/images/preview_monopoly.jpg" 
+            alt="Акция 1" 
+            className="slide-image"
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="/images/sales.jpg" alt="Акция 2" className="img-fluid" />
+        <div className="slide-image-container">
+          <img 
+            src="/images/sales.jpg" 
+            alt="Акция 2" 
+            className="slide-image"
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="/images/Bang1.jpg" alt="Акция 3" className="img-fluid" />
+        <div className="slide-image-container">
+          <img 
+            src="/images/Bang1.jpg" 
+            alt="Акция 3" 
+            className="slide-image"
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="/images/Carcassonne1.jpeg" alt="Акция 4" className="img-fluid" />
+        <div className="slide-image-container">
+          <img 
+            src="/images/Pandemic1.jpg" 
+            alt="Акция 4" 
+            className="slide-image"
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="/images/Citadels1.jpg" alt="Акция 5" className="img-fluid" />
+        <div className="slide-image-container">
+          <img 
+            src="/images/Citadels1.jpg" 
+            alt="Акция 5" 
+            className="slide-image"
+          />
+        </div>
       </SwiperSlide>
       <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div>

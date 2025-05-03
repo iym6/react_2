@@ -38,16 +38,18 @@ const GameDetails = () => {
             <img src={game.specs.time.image} alt="Время игры" />
             <img src={game.specs.players.image} alt="Количество игроков" />
           </div>
-          <p className="game-price">{game.specs.price}</p>
-          <button 
-            className="add-to-cart" 
-            onClick={() => addToCart({
-              ...game,
-              quantity: 1
-            })}
-          >
-            Добавить в корзину
-          </button>
+          <div className="game-price-container">
+            <div className="game-price">{game.specs.price}₽</div>
+            <button 
+              className="add-to-cart" 
+              onClick={() => addToCart({
+                ...game,
+                quantity: 1
+              })}
+            >
+              Добавить в корзину
+            </button>
+          </div>
         </div>
         <div className="game-slider">
           <Swiper
