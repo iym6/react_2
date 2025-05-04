@@ -61,8 +61,8 @@ export const games = [
     media: {
       mainImage: "/images/Carcassonne.jpg",
       gallery: [
+        "/images/Carcassonne2.jpg",
         "/images/Carcassonne1.jpeg",
-        "/images/Carcassonne2.jpg"
       ]
     }
   },
