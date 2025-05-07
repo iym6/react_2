@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Slider from '../Slider/slider';
-import { CartContext } from '../Cart/context/CartContext'
 import './Catalog.css';
 import { games } from '../GameDetails/GamesData';
-import { Link } from 'react-router-dom';
 import Filters, { filterGames, getTimeDisplay } from '../Filters/Filters';
-
+import GameCard from '../GameCard/GameCard'; // Импортируем GameCard из отдельного файла
 
 const Catalog = () => {
   const [filters, setFilters] = useState({
@@ -35,106 +33,51 @@ const Catalog = () => {
   return (
     <div>
       <Slider />
-    <div className="catalog-container">
-      <div className="catalog-header">
-        <h1>Каталог настольных игр</h1>
-        <div className="controls">
-          <div className="sorting">
-            <label>Сортировка:</label>
-            <select 
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              <option value="default">По умолчанию</option>
-              <option value="price-asc">Цена (по возрастанию)</option>
-              <option value="price-desc">Цена (по убыванию)</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div className="catalog-content">
-        <aside className="filters-sidebar">
-          <Filters 
-            filters={filters}
-            onFilterChange={setFilters}
-          />
-        </aside>
-
-        <main className="games-grid">
-          {sortedGames.length > 0 ? (
-            sortedGames.map(game => (
-              <GameCard 
-                key={game.id}
-                game={game}
-              />
-            ))
-          ) : (
-            <div className="no-results">
-              <h3>Игры не найдены</h3>
-              <p>Попробуйте изменить параметры фильтрации</p>
+      <div className="catalog-container">
+        <div className="catalog-header">
+          <h1>Каталог настольных игр</h1>
+          <div className="controls">
+            <div className="sorting">
+              <label>Сортировка:</label>
+              <select 
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="default">По умолчанию</option>
+                <option value="price-asc">Цена (по возрастанию)</option>
+                <option value="price-desc">Цена (по убыванию)</option>
+              </select>
             </div>
-          )}
-        </main>
-      </div>
-    </div>
-    </div>
-  );
-};
-
-// Компонент карточки игры
-const GameCard = ({ game, viewMode }) => {
-  const { addToCart } = useContext(CartContext);
-
-  const handleAddToCart = (e) => {
-    e.stopPropagation(); 
-    e.preventDefault(); 
-    addToCart({
-      ...game,
-      quantity: 1
-    });
-  };
-
-  return (
-    <Link to={`/game/${game.id}`} className={`game-card ${viewMode}`} style={{ textDecoration: 'none' }}>
-      <div className="game-image">
-        <img 
-          src={game.media.mainImage} 
-          alt={game.title}
-          loading="lazy"
-        />
-      </div>
-      <div className="game-info">
-        <h3>{game.title}</h3>
-        
-        <div className="game-specs-row">
-          <div className="spec-item">
-            <span className="spec-label">Возраст</span>
-            <span className="spec-value">{game.specs.age.min}+</span>
-          </div>
-          <div className="spec-item">
-            <span className="spec-label">Время</span>
-            <span className="spec-value">{getTimeDisplay(game)}</span>
-          </div>
-          <div className="spec-item">
-            <span className="spec-label">Игроки</span>
-            <span className="spec-value">{game.specs.players.min}-{game.specs.players.max}</span>
           </div>
         </div>
-        
-        <p className="short-description">{game.description.short}</p>
-        
-        <div className="game-footer">
-          <div className="price">{game.specs.price}₽</div>
-          <button 
-            className="add-to-cart" 
-            onClick={handleAddToCart}
-          >
-            В корзину
-          </button>
+
+        <div className="catalog-content">
+          <aside className="filters-sidebar">
+            <Filters 
+              filters={filters}
+              onFilterChange={setFilters}
+            />
+          </aside>
+
+          <main className="games-grid">
+            {sortedGames.length > 0 ? (
+              sortedGames.map(game => (
+                <GameCard 
+                  key={game.id}
+                  game={game}
+                  getTimeDisplay={getTimeDisplay} // Передаем функцию как пропс
+                />
+              ))
+            ) : (
+              <div className="no-results">
+                <h3>Игры не найдены</h3>
+                <p>Попробуйте изменить параметры фильтрации</p>
+              </div>
+            )}
+          </main>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

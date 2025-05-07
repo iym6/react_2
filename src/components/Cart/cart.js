@@ -14,28 +14,17 @@ const Cart = () => {
     }
   };
 
-  // Функция для правильного склонения слова "товар"
   const getItemsWord = (count) => {
-    const lastDigit = count % 10;
-    const lastTwoDigits = count % 100;
-    
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
-      return 'товаров';
-    }
-    if (lastDigit === 1) {
-      return 'товар';
-    }
-    if (lastDigit >= 2 && lastDigit <= 4) {
-      return 'товара';
-    }
-    return 'товаров';
+    const cases = [2, 0, 1, 1, 1, 2];
+    const words = ['товар', 'товара', 'товаров'];
+    return words[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[Math.min(count % 10, 5)]];
   };
-
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0)
   return (
     <div className="cart-container">
       <div className="cart-header">
         <h1>Корзина</h1>
-        <span className="items-count">{cart.length} {getItemsWord(cart.length)}</span>
+        <span className="items-count">{count} {getItemsWord(count)}</span>
       </div>
 
       {cart.length === 0 ? (
@@ -87,7 +76,7 @@ const Cart = () => {
             </div>
             
             <div className="summary-row">
-              <span>Товары ({cart.length})</span>
+              <span>Товары ({count})</span>
               <span>{totalPrice} ₽</span>
             </div>
             
