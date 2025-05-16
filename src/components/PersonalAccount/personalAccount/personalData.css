@@ -1,0 +1,113 @@
+.dashboard {
+  display: flex;
+  background: #ffffff;
+  /* border: 1px solid #333;  */
+  font-family: sans-serif;
+  justify-self: space-between;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dashboard-content-container {
+  border-radius: 15px;
+  box-shadow: 0 0 7px #7d7d7d;
+  padding: 2vw 3vw;
+  max-width: 20vw;
+  margin: 2vw 2vw;
+}
+.main-content-container {
+  flex: 1;
+  border-radius: 15px;
+  box-shadow: 0 0 7px #7d7d7d;
+  padding: 1vw 2vw;
+  margin: 2vw 1.5vw;
+}
+
+.avatar {
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  box-shadow: 0 3px 20px #999999;
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(70%);
+  }
+}
+.username {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.email {
+  margin-bottom: 5px;
+  color: #666;
+  font-size: 16px;
+}
+.header-menu {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.element-menu {
+  border: none;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.btn-edit {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9em;
+  padding: 0;
+}
+
+.save {
+  background-color: #28a745;
+  color: white;
+  margin-right: 8px;
+}
+
+.cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}

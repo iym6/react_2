@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Slider from '../Slider/slider';
-import './Catalog.css';
-import { games } from '../GameDetails/GamesData';
-import Filters, { filterGames, getTimeDisplay } from '../Filters/Filters';
-import GameCard from '../GameCard/GameCard'; // Импортируем GameCard из отдельного файла
+import React, { useState } from "react";
+import Slider from "../Slider/slider";
+import "./Catalog.css";
+import { games } from "../GameDetails/GamesData";
+import Filters, { filterGames, getTimeDisplay } from "../Filters/Filters";
+import GameCard from "../GameCard/GameCard"; // Импортируем GameCard из отдельного файла
 
 const Catalog = () => {
   const [filters, setFilters] = useState({
@@ -14,16 +14,16 @@ const Catalog = () => {
     categories: [],
   });
 
-  const [sortBy, setSortBy] = useState('default'); // 'default', 'price-asc', 'price-desc'
+  const [sortBy, setSortBy] = useState("default"); // 'default', 'price-asc', 'price-desc'
 
   // Применяем фильтры и сортировку
   const filteredGames = filterGames(games, filters);
 
   const sortedGames = [...filteredGames].sort((a, b) => {
-    switch(sortBy) {
-      case 'price-asc':
+    switch (sortBy) {
+      case "price-asc":
         return a.specs.price - b.specs.price;
-      case 'price-desc':
+      case "price-desc":
         return b.specs.price - a.specs.price;
       default:
         return 0;
@@ -39,7 +39,7 @@ const Catalog = () => {
           <div className="controls">
             <div className="sorting">
               <label>Сортировка:</label>
-              <select 
+              <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
               >
@@ -53,16 +53,13 @@ const Catalog = () => {
 
         <div className="catalog-content">
           <aside className="filters-sidebar">
-            <Filters 
-              filters={filters}
-              onFilterChange={setFilters}
-            />
+            <Filters filters={filters} onFilterChange={setFilters} />
           </aside>
 
           <main className="games-grid">
             {sortedGames.length > 0 ? (
-              sortedGames.map(game => (
-                <GameCard 
+              sortedGames.map((game) => (
+                <GameCard
                   key={game.id}
                   game={game}
                   getTimeDisplay={getTimeDisplay} // Передаем функцию как пропс

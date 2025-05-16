@@ -1,0 +1,12 @@
+.games-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  width: 80%;
+}
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
