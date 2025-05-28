@@ -6,6 +6,7 @@ import Registration from "./components/Registration/registration";
 import Footer from "./components/Footer/footer";
 import Login from "./components/Login/login";
 import Cart from "./components/Cart/cart";
+import Favorites from "./components/Favourites/Favourites";
 import PersonalAccount from "./components/PersonalAccount/personalAccount/personalData";
 import GameDetails from "./components/GameDetails/GameDetails";
 import { ToastContainer } from "react-toastify";
@@ -19,7 +20,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Catalog />} />
         <Route path="/game/:id" element={<GameDetails />} />
-        <Route path="/login" element={<PersonalAccount />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/account" element={<PersonalAccount />} />
+        <Route path="/favourites" element={<Favorites />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/registration" element={<Registration />} />
       </Routes>

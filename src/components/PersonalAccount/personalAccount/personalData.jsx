@@ -3,8 +3,11 @@ import { useRef, useState } from "react";
 import ElementMenu from "../elementMenu";
 import ChangeData from "../changePersonalData/changePersonalData";
 import Orders from "../orders/orders";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UserDashboard() {
+  const navige = useNavigate();
+  const maxLength = 10;
   const [userData, setUserData] = useState({
     avatar: "/images/sales.jpg",
     name: "Name",
@@ -19,18 +22,16 @@ export default function UserDashboard() {
     }
   }
 
+  function truncateText(text) {
+    return text.length > maxLength
+      ? text.substring(0, maxLength) + "..."
+      : text;
+  }
+
   const contentPage = () => {
     switch (typeActiveContent) {
       case "changeData": {
         return <ChangeData userData={userData} setUserData={setUserData} />;
-      }
-      case "actual": {
-        return (
-          <Orders
-            typeActiveContent={typeActiveContent}
-            setTypeActiveContent={setTypeActiveContent}
-          />
-        );
       }
       case "purchased": {
         return (
@@ -76,7 +77,7 @@ export default function UserDashboard() {
             onChange={(e) => handleAvatarChange(e)}
             style={{ display: "none" }}
           />
-          <div className="username">{userData.name}</div>
+          <div className="username">{truncateText(userData.name)}</div>
           {/* <div className="email">{userData.email}</div> */}
           <button
             onClick={() => setTypeActiveContent("changeData")}
@@ -84,16 +85,17 @@ export default function UserDashboard() {
           >
             Изменить профиль
           </button>
-          <h4 className="header-menu">Личная информация</h4>
-          <ElementMenu>Главная</ElementMenu>
-          <ElementMenu>Баланс</ElementMenu>
+          {/* <h4 className="header-menu">Личная информация</h4> */}
+          {/* <ElementMenu>Главная</ElementMenu> */}
+          {/* <ElementMenu>Баланс</ElementMenu> */}
           <h4 className="header-menu">Заказы</h4>
-          <ElementMenu onClick={() => setTypeActiveContent("actual")}>
-            Мои заказы
-          </ElementMenu>
-          <ElementMenu>Мои возвраты</ElementMenu>
+          {/* <ElementMenu>Мои возвраты</ElementMenu> */}
           <ElementMenu onClick={() => setTypeActiveContent("purchased")}>
             Купленные товары
+          </ElementMenu>
+          <ElementMenu onClick={() => navige("/cart")}>Моя корзина</ElementMenu>
+          <ElementMenu onClick={() => navige("/favourites")}>
+            Мое избранное
           </ElementMenu>
         </div>
       </div>

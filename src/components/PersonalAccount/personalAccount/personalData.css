@@ -1,6 +1,5 @@
 .dashboard {
   display: flex;
-  background: #ffffff;
   /* border: 1px solid #333;  */
   font-family: sans-serif;
   justify-self: space-between;
@@ -13,24 +12,23 @@
 }
 .dashboard-content-container {
   border-radius: 15px;
-  box-shadow: 0 0 7px #7d7d7d;
   padding: 2vw 3vw;
   max-width: 20vw;
   margin: 2vw 2vw;
+  background: #f7f7f7;
 }
 .main-content-container {
   flex: 1;
   border-radius: 15px;
-  box-shadow: 0 0 7px #7d7d7d;
   padding: 1vw 2vw;
   margin: 2vw 1.5vw;
+  background: #f7f7f7;
 }
 
 .avatar {
   width: 7vw;
   height: 7vw;
   border-radius: 50%;
-  box-shadow: 0 3px 20px #999999;
   transition: 0.3s ease;
   margin-bottom: 15px;
   cursor: pointer;

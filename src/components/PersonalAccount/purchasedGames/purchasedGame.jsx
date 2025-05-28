@@ -1,27 +1,25 @@
 import "./purchasedGames.css";
 import { useState } from "react";
-import { games } from "./games";
-import GameCard from "./gameCard";
+import { games } from "../../GameDetails/GamesData";
+import GameCard from "../../GameCard/GameCard";
 
 export default function PurchasedGames() {
   const [sortValue, setSortValue] = useState("default");
 
-  const listGames = () => {
-    return [...games].sort((a, b) => {
-      switch (sortValue) {
-        case "price-asc":
-          return a.specs.price - b.specs.price;
-        case "price-desc":
-          return b.specs.price - a.specs.price;
+  const listGames = [...games].sort((a, b) => {
+    switch (sortValue) {
+      case "price-asc":
+        return a.specs.price - b.specs.price;
+      case "price-desc":
+        return b.specs.price - a.specs.price;
 
-        default:
-          return 0;
-      }
-    });
-  };
+      default:
+        return 0;
+    }
+  });
 
   return (
-    <div>
+    <>
       <div className="sort">
         <select
           value={sortValue}
@@ -34,7 +32,7 @@ export default function PurchasedGames() {
         </select>
       </div>
       <div className="main-container">
-        <div className="game-grid">
+        <div className="games-grid">
           {listGames.length > 0 ? (
             listGames.map((game) => <GameCard game={game} />)
           ) : (
@@ -44,6 +42,6 @@ export default function PurchasedGames() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
