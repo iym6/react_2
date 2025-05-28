@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../Cart/context/CartContext'; // Импортируем контекст
+import { CartContext } from '../Cart/context/CartContext';
 import { useFavorites } from '../Favourites/context/FavouritesContext';
 import './Header.css';
 
 const Header = () => {
-  const { cart } = useContext(CartContext); // Используем контекст
+  const { cart } = useContext(CartContext);
   const { favorites } = useFavorites();
   const showMessage = () => {
     alert('Это будет потом');
   };
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0)
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  
   return (
     <header className="header">
       <div className="header-left">
@@ -18,6 +19,7 @@ const Header = () => {
           <img src="/images/start.svg" alt="Домой" />
         </Link>
       </div>
+      
       <div className="header-center">
         <div className="search-container">
           <input
@@ -28,8 +30,9 @@ const Header = () => {
           />
         </div>
       </div>
+      
       <div className="header-right">
-      <Link to="/favourites" className="icon-button">
+        <Link to="/favourites" className="icon-button">
           <img src="/images/favorite.svg" alt="Избранное" />
           {favorites.length > 0 && <span className="favourites-count">{favorites.length}</span>} 
         </Link>
@@ -37,13 +40,9 @@ const Header = () => {
           <img src="/images/login.svg" alt="Войти" />
         </Link>
         <Link to="/cart" className="icon-button cart-icon"> 
-        <img src="/images/cart.svg" alt="Корзина" />
-        {cart.length > 0 && (
-          <span className="cart-count">
-            {count}
-          </span>
-        )} 
-      </Link>
+          <img src="/images/cart.svg" alt="Корзина" />
+          {cart.length > 0 && <span className="cart-count">{count}</span>} 
+        </Link>
       </div>
     </header>
   );

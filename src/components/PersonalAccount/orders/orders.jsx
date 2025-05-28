@@ -1,5 +1,4 @@
 import "./orders.css";
-import { useState } from "react";
 import PurchasedGames from "../purchasedGames/purchasedGame";
 
 export default function Orders() {

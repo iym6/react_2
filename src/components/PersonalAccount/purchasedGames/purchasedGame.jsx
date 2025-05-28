@@ -31,8 +31,8 @@ export default function PurchasedGames() {
           <option value={"price-desc"}>Сначала дорогие</option>
         </select>
       </div>
-      <div className="main-container">
-        <div className="games-grid">
+      <div className="purchased_main-container">
+        <div className="purchased_games-grid">
           {listGames.length > 0 ? (
             listGames.map((game) => <GameCard game={game} />)
           ) : (

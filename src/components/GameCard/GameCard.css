@@ -1,4 +1,4 @@
-/* Карточка игры */
+/* Базовые стили карточки */
 .game-card {
   border: 1px solid #eaeaea;
   border-radius: 8px;
@@ -7,9 +7,10 @@
   background: white;
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 500px; 
+  min-height: 400px;
   position: relative;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .game-card:hover {
@@ -17,22 +18,29 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* Изображение игры */
 .game-image {
-  height: 350px;
+  height: 300px;
+  padding-bottom: 60%; 
+  position: relative;
   overflow: hidden;
 }
 
 .game-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease;
   object-fit: contain;
+  transition: transform 0.5s ease;
 }
 
 .game-card:hover .game-image img {
   transform: scale(1.03);
 }
 
+/* Информация о игре */
 .game-info {
   padding: 15px;
   display: flex;
@@ -41,36 +49,37 @@
 }
 
 .game-info h3 {
-  font-size: 20px;
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 700;
   margin: 0 0 10px 0;
   color: #2c3e50;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
+/* Спецификации игры */
 .game-specs-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
   margin: 0 0 12px 0;
-  padding: 0;
 }
 
 .spec-item {
   text-align: center;
-  flex: 1;
 }
 
 .spec-label {
-  font-size: 15px;
+  font-size: clamp(12px, 2vw, 14px);
   color: #555;
   font-weight: 500;
   display: block;
 }
 
 .spec-value {
-  font-size: 15px;
+  font-size: clamp(13px, 2vw, 15px);
   font-weight: 700;
   color: #3498db;
   display: block;
@@ -79,7 +88,7 @@
 
 /* Краткое описание */
 .short-description {
-  font-size: 15px;
+  font-size: clamp(13px, 2vw, 15px);
   color: #666;
   margin: 0 0 15px 0;
   line-height: 1.4;
@@ -100,18 +109,19 @@
 
 .price {
   font-weight: 700;
-  font-size: 20px;
+  font-size: clamp(16px, 2vw, 20px);
   color: #2c3e50;
 }
 
 .add-to-cart {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: clamp(13px, 2vw, 15px);
 }
 
 .add-to-cart:hover {
@@ -173,30 +183,98 @@
   100% { transform: scale(1); }
 }
 
-/* Адаптивность */
-@media (max-width: 576px) {
-  .game-card {
-    height: auto;
+/* Адаптивность для планшетов */
+@media (max-width: 992px) {
+  .game-specs-row {
+    grid-template-columns: repeat(3, 1fr);
   }
   
   .game-image {
-    height: 140px;
+    padding-bottom: 65%;
+  }
+}
+
+/* Адаптивность для небольших планшетов и крупных телефонов */
+@media (max-width: 768px) {
+  .game-card {
+    min-height: 380px;
+  }
+  
+  .game-specs-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
   }
   
   .game-info {
     padding: 12px;
   }
   
-  .game-specs-row {
-    flex-wrap: wrap;
-    gap: 8px;
+  .short-description {
+    -webkit-line-clamp: 2;
   }
   
-  .spec-item {
-    flex: 0 0 calc(50% - 4px);
+  .favorite-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 576px) {
+  .game-card {
+    min-height: 320px;
+  }
+  
+  .game-image {
+    padding-bottom: 70%;
+  }
+  
+  .game-specs-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .spec-item:nth-child(3) {
+    grid-column: span 2;
   }
   
   .short-description {
     -webkit-line-clamp: 2;
+    margin-bottom: 10px;
+  }
+  
+  .add-to-cart {
+    padding: 6px 12px;
+  }
+  
+  .favorite-btn {
+    width: 26px;
+    height: 26px;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+
+/* Для очень маленьких экранов */
+@media (max-width: 425px) {
+  .game-card {
+    min-height: 280px;
+  }
+  
+  .game-info {
+    padding: 10px;
+  }
+  
+  .game-specs-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  
+  .spec-item:nth-child(3) {
+    grid-column: span 1;
+  }
+  
+  .price {
+    font-size: 15px;
   }
 }
