@@ -31,7 +31,7 @@
 
 .game-price-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 15px;
   margin: 20px 0;
@@ -40,6 +40,13 @@
 .game-price {
   font-size: clamp(22px, 5vw, 26px);
   font-weight: bold;
+  margin-right: auto;
+}
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .add-to-cart {
@@ -50,9 +57,47 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: clamp(14px, 3vw, 16px);
-  transition: background-color 0.3s;
-  width: 100%;
-  max-width: 300px;
+  transition: all 0.3s;
+}
+
+.add-to-cart:hover {
+  background-color: #0069d9;
+}
+
+/* Минималистичная кнопка избранного */
+.favorite-button {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #007bff;
+  background: transparent;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.favorite-button svg {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s;
+}
+
+.favorite-button:not(.active) svg {
+  fill: none;
+  stroke: #007bff;
+  stroke-width: 2px;
+}
+
+.favorite-button.active svg {
+  fill: #007bff;
+  stroke: #007bff;
+}
+
+.favorite-button:hover {
+  background-color: rgba(0, 123, 255, 0.1);
 }
 
 .game-slider {
@@ -85,6 +130,11 @@
   text-align: center;
   box-sizing: border-box;
   max-width: 300px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
 }
 
 /* Адаптация для планшетов */
@@ -104,15 +154,6 @@
     flex: 1;
   }
   
-  .game-price-container {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-  
-  .add-to-cart {
-    width: auto;
-  }
-  
   .back-button {
     width: auto;
     max-width: none;
@@ -129,5 +170,27 @@
   .game-slider {
     width: 600px;
     height: 400px;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 767px) {
+  .game-price-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .game-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .add-to-cart {
+    flex-grow: 1;
+  }
+  
+  .favorite-button {
+    width: 41px;
+    height: 41px;
   }
 }
