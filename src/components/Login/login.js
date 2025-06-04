@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Для навигации
-import './Login.css'; // Стили для страницы входа
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Для навигации
+import { useAuth } from "./AuthContext";
+import "./Login.css"; // Стили для страницы входа
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Хук для навигации
+  const { login } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Здесь можно добавить логику для авторизации
     alert(`Вход выполнен: ${email}`);
-    navigate('/'); // Перенаправляем на главную страницу после входа
+    login();
+    navigate("/account"); // Перенаправляем на главную страницу после входа
   };
 
   return (
